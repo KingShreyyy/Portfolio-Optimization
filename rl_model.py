@@ -1,9 +1,8 @@
 import numpy as np
 import tensorflow as tf
 
-# Define a simple Neural Network for RL
 def train_rl_agent(df, tickers):
-    # Placeholder for simplified RL agent logic
+
     returns = df.pct_change().dropna()
     state_dim = len(tickers)
     action_dim = len(tickers)
@@ -16,8 +15,7 @@ def train_rl_agent(df, tickers):
 
     optimizer = tf.keras.optimizers.Adam(learning_rate=0.001)
 
-    # Placeholder: Train model and return predicted portfolio weights
     latest_state = returns.values[-1].reshape(1, -1)
     rl_weights = model.predict(latest_state)[0]
-    rl_weights /= np.sum(rl_weights)  # Normalize to sum = 1
+    rl_weights /= np.sum(rl_weights) 
     return rl_weights
